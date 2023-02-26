@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anthony Hernandez</title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.0/purify.min.js"></script>
+</head>
+<body>
+    <header>
+        <a href="https://splendorous-frangollo-5135b0.netlify.app">Anthony Hernandez</a>
+        <nav>
+            <a href="https://splendorous-frangollo-5135b0.netlify.app/cv.html">CV</a> 
+            <a href="https://splendorous-frangollo-5135b0.netlify.app/projects.html">Projects</a>
+            <a href="https://splendorous-frangollo-5135b0.netlify.app/contact.html">Contact Me</a>
+        </nav>
+    </header>
+    <div id="wrapper">
+        <aside> 
+            <picture>
+                <source media="(min-width:300px)" srcset="https://splendorous-frangollo-5135b0.netlify.app//profilePic.jpeg">
+                <img src="https://splendorous-frangollo-5135b0.netlify.app//profilePic.jpeg" alt="A picture of me." style="width: 300px;">
+            </picture> 
+        </aside>
+        <main>
+            <h1>Native Dialogs</h1>
+
+            <button id="alert">Alert</button>
+            <button id="confirm">Confirm</button>
+            <button id="prompt">Prompt</button>
+            <button id="safer_prompt">Safer Prompt</button>
+            <hr>
+            <output id="out"></output>
+
+            <script>
+                const el_alert = document.getElementById("alert");
+                const el_confirm = document.getElementById("confirm");
+                const el_prompt = document.getElementById("prompt");
+                const el_safer_prompt = document.getElementById("safer_prompt");
+                const el_out = document.getElementById("out");
+
+                el_alert.addEventListener("click", function () {
+                    alert("Hello, you are ALERTED.");
+                });
+
+                el_confirm.addEventListener("click", function () {
+                    let outcome = confirm("Please confirm something.");
+                    el_out.textContent = `The value returned by the confirm method is : ${outcome}`;
+                });
+
+                el_prompt.addEventListener("click", function () {
+                   let outcome = prompt("Please enter your name");
+                    if(outcome != "" && outcome != null){
+                        let purifiedOutcome = 
+                        el_out.textContent = `Thanks for entering your name ${outcome}`;
+                    }else{
+                        el_out.textContent = `The user didn't enter anything.`;
+                    }
+                });
+
+                el_safer_prompt.addEventListener("click", function () {
+                   let dirty = prompt("Please enter your name");
+                   if(dirty != "" && dirty != null){
+                        let clean = DOMPurify.sanitize(dirty);
+                        el_out.textContent = `Thanks for entering your name ${clean}`;
+                    }else{
+                        el_out.textContent = `The user didn't enter anything.`;
+                    }
+                });
+
+            </script>
+
+        </main>
+    </div>
+</body>
+</html>
