@@ -72,15 +72,15 @@ function save_bttn () {
         posts.forEach(element => {
             if(element.id === current_li.id){
                 element.post = entry.post;
-                element.post = entry.date;
-                element.post = entry.title;
+                element.date = entry.date;
+                element.title = entry.title;
             }
         });
         localStorage.setItem('post_entries', JSON.stringify(posts));
         document.getElementById(`textbox_${index}`).textContent = display_string;
-        // current_li.post = entry.post;
-        // current_li.date = entry.date;
-        // current_li.title = entry.title;
+        current_li.post = entry.post;
+        current_li.date = entry.date;
+        current_li.title = entry.title;
     }
 
     editing_post = false;
