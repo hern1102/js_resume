@@ -1,15 +1,16 @@
+import {style_delete, style_edit} from './styledposts.js';
 
 const el_add_post = document.getElementById("add_post_bttn");
-const post_d = document.getElementById("post_dialog");
+export const post_d = document.getElementById("post_dialog");
 const el_cancel_post = document.getElementById("cancel_bttn");
 const el_save_bttn = document.getElementById("save_bttn");
-const el_title = document.getElementById("title");
-const el_date = document.getElementById("date");
-const el_blog_post = document.getElementById("blog_post");
-const el_list = document.getElementById("list");
-let current_li;
-let editing_post = false;
-let counter = 0;
+export const el_title = document.getElementById("title");
+export const el_date = document.getElementById("date");
+export const el_blog_post = document.getElementById("blog_post");
+export const el_list = document.getElementById("list");
+export let current_li;
+export let editing_post = false;
+export let counter = 0;
 
 
 let posts = JSON.parse(localStorage.getItem('post_entries')) || [];
@@ -62,6 +63,12 @@ function save_bttn () {
         let newEditButton = document.createElement("button");
         newEditButton.textContent = "Edit";
         newEditButton.addEventListener("click", edit_post);
+        if(document.title === "styled crud"){
+            newDeleteButton = style_delete(newDeleteButton);
+            newDeleteButton.textContent = "";
+            newEditButton = style_edit(newEditButton);
+            newEditButton.textContent = "";
+        }
         newListItem.appendChild(textbox);
         newListItem.appendChild(newDeleteButton);
         newListItem.appendChild(newEditButton);
@@ -125,6 +132,12 @@ function display (title, date, post){
     newListItem.title = title;
     let newEditButton = document.createElement("button");
     newEditButton.textContent = "Edit";
+    if(document.title === "styled crud"){
+        newDeleteButton = style_delete(newDeleteButton);
+        newDeleteButton.textContent = "";
+        newEditButton = style_edit(newEditButton);
+        newEditButton.textContent = "";
+    }
     newEditButton.addEventListener("click", edit_post);
     newListItem.appendChild(textbox);
     newListItem.appendChild(newDeleteButton);
