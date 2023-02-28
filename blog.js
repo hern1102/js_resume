@@ -11,13 +11,21 @@ export const el_list = document.getElementById("list");
 export let current_li;
 export let editing_post = false;
 export let counter = 0;
-
-
+let placeholder = [{"title":"Blog Post 1", "date":"2023-02-08", "post":"I've posted something"},
+{"title":"Blog Post 2", "date":"2023-02-08", "post":"Hey, here too!!"},
+{"title":"Blog Post 3", "date":"2023-02-08", "post":"Wait a minute, here too?"}
+]
 let posts = JSON.parse(localStorage.getItem('post_entries')) || [];
 
-posts.forEach(post => {
-    display(post.title, post.date, post.post);
-});
+if(posts.length === 0){
+    placeholder.forEach(post => {
+        display(post.title, post.date, post.post);
+    });
+}else{
+    posts.forEach(post => {
+        display(post.title, post.date, post.post);
+    });
+}
 
 el_add_post.addEventListener("click", function () {
     post_d.showModal();

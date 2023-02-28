@@ -9,7 +9,7 @@
 </head>
 <body>
         <main>
-            <h1>Simple Dialogs</h1>
+            <h1>Simple Dialogs?</h1>
 
             <button id="alert">Alert</button>
             <button id="confirm">Confirm</button>
@@ -26,31 +26,31 @@
                 const el_out = document.getElementById("out");
 
                 el_alert.addEventListener("click", function () {
-                    alert("Hello, you are ALERTED.");
+                    alert("Alert Pressed.");
                 });
 
                 el_confirm.addEventListener("click", function () {
-                    let outcome = confirm("Please confirm something.");
-                    el_out.textContent = `The value returned by the confirm method is : ${outcome}`;
+                    let outcome = window.confirm("Do you confirm this?");
+                    el_out.textContent = `Confirm Result : ${outcome}`;
                 });
 
                 el_prompt.addEventListener("click", function () {
-                   let outcome = prompt("Please enter your name");
+                   let outcome = window.prompt("What is your name?");
                     if(outcome != "" && outcome != null){
                         let purifiedOutcome = 
-                        el_out.textContent = `Thanks for entering your name ${outcome}`;
+                        el_out.textContent = `Prompt Result: ${outcome}`;
                     }else{
-                        el_out.textContent = `The user didn't enter anything.`;
+                        el_out.textContent = `Prompt Result: The user didn't enter anything.`;
                     }
                 });
 
                 el_safer_prompt.addEventListener("click", function () {
-                   let dirty = prompt("Please enter your name");
+                   let dirty = window.prompt("Please enter your name");
                    if(dirty != "" && dirty != null){
                         let clean = DOMPurify.sanitize(dirty);
-                        el_out.textContent = `Thanks for entering your name ${clean}`;
+                        el_out.textContent = `Prompt Result: ${clean}`;
                     }else{
-                        el_out.textContent = `The user didn't enter anything.`;
+                        el_out.textContent = `Prompt Result: The user didn't enter anything.`;
                     }
                 });
 
