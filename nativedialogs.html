@@ -30,28 +30,40 @@
                 });
 
                 el_confirm.addEventListener("click", function () {
-                    let outcome = window.confirm("Do you confirm this?");
-                    el_out.textContent = `Confirm Result : ${outcome}`;
+                    el_out.textContent = '';
+                    
+                    setTimeout(() => {
+                        let outcome = window.confirm("Do you confirm this?");
+                        el_out.textContent = `Confirm Result : ${outcome}`;
+                    }, 30); 
                 });
 
                 el_prompt.addEventListener("click", function () {
-                   let outcome = window.prompt("What is your name?");
+                    el_out.textContent = '';
+        
+                   setTimeout(() => {
+                    let outcome = window.prompt("What is your name?");
                     if(outcome != "" && outcome != null){
                         let purifiedOutcome = 
                         el_out.textContent = `Prompt Result: ${outcome}`;
                     }else{
-                        el_out.textContent = `Prompt Result: The user didn't enter anything.`;
+                        el_out.textContent = `Prompt Result: The user didn't enter anything.`;  
                     }
+                    }, 30);
                 });
 
                 el_safer_prompt.addEventListener("click", function () {
-                   let dirty = window.prompt("Please enter your name");
-                   if(dirty != "" && dirty != null){
+                    el_out.textContent = '';
+
+                   setTimeout(() => {
+                    let dirty = window.prompt("Please enter your name");
+                    if(dirty != "" && dirty != null){
                         let clean = DOMPurify.sanitize(dirty);
                         el_out.textContent = `Prompt Result: ${clean}`;
                     }else{
                         el_out.textContent = `Prompt Result: The user didn't enter anything.`;
                     }
+                    }, 30); 
                 });
 
             </script>
