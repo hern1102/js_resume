@@ -22,6 +22,7 @@ const cancel_button_confirm = document.getElementById("cancel_confirm_bttn");
 const confirm_d = document.getElementById("confirm_dialog");
 
 el_confirm.addEventListener("click", function () {
+    el_out.textContent = "";
     confirm_d.showModal();
 });
 
@@ -43,6 +44,7 @@ const prompt_cancel_bttn = document.getElementById("prompt_cancel_bttn");
 const prompt_ok_bttn = document.getElementById("prompt_ok_bttn");
 
 el_prompt.addEventListener("click", function () {
+    el_out.textContent = "";
     prompt_d.showModal();
 });
 
